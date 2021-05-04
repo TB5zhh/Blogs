@@ -244,7 +244,7 @@
 
     
         <meta property="article:published_time" content="Tue May 04 2021 10:06:03 GMT+0800">
-        <meta property="article:modified_time" content="Tue May 04 2021 11:39:37 GMT+0800">
+        <meta property="article:modified_time" content="Tue May 04 2021 14:05:04 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -267,7 +267,7 @@
     "mainEntityOfPage": "http://tb5zhh.github.io/blogs/blogs/2021/05/04/TransFG/index.html",
     "headline": "TransFG",
     "datePublished": "Tue May 04 2021 10:06:03 GMT+0800",
-    "dateModified": "Tue May 04 2021 11:39:37 GMT+0800",
+    "dateModified": "Tue May 04 2021 14:05:04 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Tian Beiwen",
@@ -512,11 +512,14 @@
 </ol>
 <h3 id="Transformers"><a href="#Transformers" class="headerlink" title="Transformers"></a>Transformers</h3><p>Transformer is initially used to handle <strong>sequential features</strong> extracted by CNN backbone for the videos. </p>
 <p><strong>ViT</strong>: applying a pure transformer directly to <strong>a sequence of image patches</strong> to perform image classification tasks.</p>
-<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><h3 id="Vision-Transformer-as-Feature-Extractor"><a href="#Vision-Transformer-as-Feature-Extractor" class="headerlink" title="Vision Transformer as Feature Extractor"></a>Vision Transformer as Feature Extractor</h3><h4 id="Image-Sequentialization"><a href="#Image-Sequentialization" class="headerlink" title="Image Sequentialization"></a>Image Sequentialization</h4><p>Following ViT, input image is pre-processed into a sequence of flattened patches.</p>
-<h4 id="Patch-Embedding"><a href="#Patch-Embedding" class="headerlink" title="Patch Embedding"></a>Patch Embedding</h4><h3 id="TransFG-Architecture"><a href="#TransFG-Architecture" class="headerlink" title="TransFG Architecture"></a>TransFG Architecture</h3><h4 id="Part-Selection-Module"><a href="#Part-Selection-Module" class="headerlink" title="Part Selection Module"></a>Part Selection Module</h4><h4 id="Contrastive-Feature-Learning"><a href="#Contrastive-Feature-Learning" class="headerlink" title="Contrastive Feature Learning"></a>Contrastive Feature Learning</h4><p>$test^2 \frac{1}{4}$</p>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><h3 id="Vision-Transformer-as-Feature-Extractor"><a href="#Vision-Transformer-as-Feature-Extractor" class="headerlink" title="Vision Transformer as Feature Extractor"></a>Vision Transformer as Feature Extractor</h3><h4 id="Image-Sequentialization"><a href="#Image-Sequentialization" class="headerlink" title="Image Sequentialization"></a>Image Sequentialization</h4><p>Based on ViT, input image is pre-processed into a sequence of <strong>overlapping</strong> flattened patches $x_p$ with <strong>sliding window</strong>.</p>
+<p>With the size of image patch $P$, and the step size of sliding window $S$, and the resolution of input image $H\times W$, the number of patches is </p>
 <script type="math/tex; mode=display">
-\\ S=\pi r^2
-\\ \sum^d_{i=0}ddd^2\int dx</script><p><a target="_blank" rel="noopener" href="https://www.google.com"><button type="button" style="
+N=N_H\times N_W=\lfloor \frac{H-P+S}{S}\rfloor\times\lfloor \frac{W-P+S}{S}\rfloor</script><p>Adjacent patches share an overlapping area of size $(P-S)\times P$ to <strong>preserve better local region information</strong>.</p>
+<h4 id="Patch-Embedding"><a href="#Patch-Embedding" class="headerlink" title="Patch Embedding"></a>Patch Embedding</h4><p>The vertorized patches $x_p$ are mapped into a latent D-dimensional embedding space using a trainable linear projection.</p>
+<script type="math/tex; mode=display">
+z_0=[x^1_p\bold{E},x^2_p\bold{E},\cdots,x^N_p\bold{E}] + \bold{E}_{pos}</script><p>where $N$ is the number of image patches, $\bold{E}$ is the patch embedding projection, and $\bold{E}_{pos}$is the position embedding.</p>
+<h3 id="TransFG-Architecture"><a href="#TransFG-Architecture" class="headerlink" title="TransFG Architecture"></a>TransFG Architecture</h3><h4 id="Part-Selection-Module"><a href="#Part-Selection-Module" class="headerlink" title="Part Selection Module"></a>Part Selection Module</h4><h4 id="Contrastive-Feature-Learning"><a href="#Contrastive-Feature-Learning" class="headerlink" title="Contrastive Feature Learning"></a>Contrastive Feature Learning</h4><p><a target="_blank" rel="noopener" href="https://www.google.com"><button type="button" style="
         border: 0;
         line-height: 2.5;
         padding: 0 20px;
