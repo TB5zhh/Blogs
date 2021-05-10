@@ -244,7 +244,7 @@
 
     
         <meta property="article:published_time" content="Mon May 10 2021 19:02:43 GMT+0800">
-        <meta property="article:modified_time" content="Mon May 10 2021 21:50:13 GMT+0800">
+        <meta property="article:modified_time" content="Mon May 10 2021 22:41:23 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -267,7 +267,7 @@
     "mainEntityOfPage": "http://tb5zhh.github.io/blogs/blogs/2021/05/10/OS-review-lab5/index.html",
     "headline": "操作系统Lab5复习",
     "datePublished": "Mon May 10 2021 19:02:43 GMT+0800",
-    "dateModified": "Mon May 10 2021 21:50:13 GMT+0800",
+    "dateModified": "Mon May 10 2021 22:41:23 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Tian Beiwen",
@@ -351,7 +351,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%9B%AE%E6%A0%87"><span class="post-toc-number">1.</span> <span class="post-toc-text">目标</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8"><span class="post-toc-number">2.</span> <span class="post-toc-text">系统调用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#fork"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">fork</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#waitpid"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">waitpid</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#exec"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">exec</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0"><span class="post-toc-number">3.</span> <span class="post-toc-text">系统实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Change-Log"><span class="post-toc-number">4.</span> <span class="post-toc-text">Change Log</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Q-amp-A"><span class="post-toc-number">5.</span> <span class="post-toc-text">Q&amp;A</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%9B%AE%E6%A0%87"><span class="post-toc-number">1.</span> <span class="post-toc-text">目标</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8"><span class="post-toc-number">2.</span> <span class="post-toc-text">系统调用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#fork"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">fork</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#waitpid"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">waitpid</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#exec"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">exec</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0"><span class="post-toc-number">3.</span> <span class="post-toc-text">系统实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Q-amp-A"><span class="post-toc-number">4.</span> <span class="post-toc-text">Q&amp;A</span></a></li></ol>
     </ul>
     
 
@@ -563,12 +563,34 @@
 <blockquote>
 <p>初始进程</p>
 </blockquote>
-<h2 id="Change-Log"><a href="#Change-Log" class="headerlink" title="Change Log"></a>Change Log</h2><ol>
-<li><span style="color: red;">基于应用名（而不是应用ID）查找ELF可执行文件</span></li>
-<li>拆分模块，<code>Processor</code>维护CPU<strong>当前</strong>执行任务，<code>TaskManager</code>管理所有任务</li>
-<li>更新<code>TaskControlBlock</code>所维护的信息，添加PID、内核栈、应用数据大小、父子进程关系、退出码</li>
-<li>==todo==</li>
-</ol>
+<p>根据<code>initproc</code>得到的ELF、解析ELF得到应用地址空间、内核栈位置、应用的入口点、查找Trap上下文物理页帧号、分配PID与内核栈、将<code>goto_trap_return</code>作为任务上下文压入内核栈、创建新TCB并更新Trap上下文，返回TCB。</p>
+<blockquote>
+<p>进程的生成（fork）</p>
+</blockquote>
+<p>复制用户空间、分配PID与内核栈、将<code>goto_trap_return</code>作为任务上下文压入内核栈、创建新PCB并更新Trap上下文以及父子进程信息、修改返回值为0、将新PCB加入进程池</p>
+<ul>
+<li>通过<code>MemorySet::from_existed_user</code>复制父进程的地址空间，而不是解析ELF</li>
+</ul>
+<blockquote>
+<p>进程的加载</p>
+</blockquote>
+<p>根据应用名获取ELF、从ELF生成新地址空间、修改入口点与用户栈以及部分内核信息。</p>
+<ul>
+<li>无需对任务上下文处理，因为不涉及进程切换</li>
+<li>在<code>trap_handler</code>中，系统调用前后需要重新获取Trap上下文，因为地址空间发生了变化</li>
+</ul>
+<blockquote>
+<p>进程的调度</p>
+</blockquote>
+<p>将当前进程从<code>PROCESSOR</code>中取出、修改状态为就绪、获取当前进程任务上下文的位置、将当前进程加入进程池、调用<code>schedule</code>进行进程切换。</p>
+<blockquote>
+<p>进程的退出</p>
+</blockquote>
+<p>将当前进程从<code>PROCESSOR</code>中取出、修改状态为僵尸进程、写入退出码、将所有子进程的父进程修改为<code>initproc</code>、对进程占用资源进行回收，最终通过<code>schedule</code>进行进程切换。</p>
+<blockquote>
+<p>进程的资源回收</p>
+</blockquote>
+<p><span style="color:red; font:italic;text-shadow: #FC0 1px 0 10px;">todo</span></p>
 <h2 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h2><blockquote>
 <p><strong>任务</strong>与<strong>进程</strong>的关系？</p>
 </blockquote>
@@ -590,6 +612,11 @@
 </ul>
 <blockquote>
 <p>进程创建为何需要两个系统调用？</p>
+<p>fork + exec 的一个比较大的问题是 fork 之后的内存页/文件等资源完全没有使用就废弃了，针对这一点，有什么改进策略？</p>
+<p>fork + exec 所带来的无效资源的问题已经基本被解决了，但是今年来 fork 还是在被不断的批判，那么到底是什么正在”杀死”fork？</p>
+<p>fork 当年被设计并称道肯定是有其好处的。请使用 <strong>带初始参数</strong> 的 spawn 重写如下 fork 程序，然后描述 fork 有那些好处。注意:使用”伪代码”传达意思即可，spawn 接口可以自定义。可以写多个文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fn main() &#123;</span><br><span class="line">    let a &#x3D; get_a();</span><br><span class="line">    if fork() &#x3D;&#x3D; 0 &#123;</span><br><span class="line">        let b &#x3D; get_b();</span><br><span class="line">        println!(&quot;a + b &#x3D; &#123;&#125;&quot;, a + b);</span><br><span class="line">        exit(0);</span><br><span class="line">    &#125;</span><br><span class="line">    println!(&quot;a &#x3D; &#123;&#125;&quot;, a);</span><br><span class="line">    0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>描述进程执行的几种状态，以及 fork/exec/wait/exit 对于状态的影响。</p>
 </blockquote>
 
         
