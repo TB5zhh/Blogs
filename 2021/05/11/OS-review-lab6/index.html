@@ -48,7 +48,7 @@
     
     <title>
         
-            归档: 2021/5 | 
+            OS-review-lab6 | 
         
         TB5&#39;s Blogs
     </title>
@@ -59,7 +59,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="">
-    <meta name="keywords" content="">
+    <meta name="keywords" content=",Operating System,Review">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -220,7 +220,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="TB5&#39;s Blogs">
-    <meta name="msapplication-starturl" content="http://tb5zhh.github.io/blogs/blogs/archives/2021/05/">
+    <meta name="msapplication-starturl" content="http://tb5zhh.github.io/blogs/blogs/2021/05/11/OS-review-lab6/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="TB5&#39;s Blogs">
@@ -235,13 +235,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://tb5zhh.github.io/blogs/blogs/archives/2021/05/">
+    <meta property="og:url" content="http://tb5zhh.github.io/blogs/blogs/2021/05/11/OS-review-lab6/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="归档: 2021/5 | TB5&#39;s Blogs">
+    <meta property="og:title" content="OS-review-lab6 | TB5&#39;s Blogs">
     <meta property="og:image" content="/blogs/img/favicon.png">
     <meta property="og:description" content="">
-    
+    <meta property="og:article:tag" content="Operating System"> <meta property="og:article:tag" content="Review"> 
 
+    
+        <meta property="article:published_time" content="Tue May 11 2021 08:16:21 GMT+0800">
+        <meta property="article:modified_time" content="Wed May 12 2021 10:35:17 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -249,13 +252,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://tb5zhh.github.io/blogs/blogs/archives/2021/05/index.html" />
+        <link rel="canonical" href="http://tb5zhh.github.io/blogs/blogs/2021/05/11/OS-review-lab6/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
 
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://tb5zhh.github.io/blogs/blogs/2021/05/11/OS-review-lab6/index.html",
+    "headline": "OS-review-lab6",
+    "datePublished": "Tue May 11 2021 08:16:21 GMT+0800",
+    "dateModified": "Wed May 12 2021 10:35:17 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "Tian Beiwen",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "TB5&#39;s Blogs",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",Operating System,Review",
+    "description": "",
+}
+</script>
 
 
     
@@ -289,465 +322,301 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%9B%AE%E6%A0%87"><span class="post-toc-number">1.</span> <span class="post-toc-text">目标</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8"><span class="post-toc-number">2.</span> <span class="post-toc-text">系统调用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="post-toc-number">3.</span> <span class="post-toc-text">实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%96%87%E4%BB%B6%E6%8E%A5%E5%8F%A3"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">文件接口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AE%A1%E9%81%93"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">管道</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Q-amp-A"><span class="post-toc-number">4.</span> <span class="post-toc-text">Q&amp;A</span></a></li></ol>
+    </ul>
     
 
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/blogs/2021/05/11/OS-review-lab6/">OS-review-lab6</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            目标
-管...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/blogs/2021/05/11/OS-review-lab6/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/blogs/img/avatar.png" width="44px" height="44px" alt="Tian Beiwen's avatar">
-            </div>
-            <div>
-                <strong>Tian Beiwen</strong>
-                <span>5月 11, 2021</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/blogs/categories/Review/">Review</a>, <a class="post_category-link" href="/blogs/categories/Review/OS/">OS</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/blogs/2021/05/10/OS-review-lab5/">操作系统Lab5复习</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            目标
-用...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/blogs/2021/05/10/OS-review-lab5/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/blogs/img/avatar.png" width="44px" height="44px" alt="Tian Beiwen's avatar">
-            </div>
-            <div>
-                <strong>Tian Beiwen</strong>
-                <span>5月 10, 2021</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/blogs/categories/Review/">Review</a>, <a class="post_category-link" href="/blogs/categories/Review/OS/">OS</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/blogs/2021/05/10/todo/">todo</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-[ ] nn.Embedding
-[ ] Usb-blaster驱动安装
-...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/blogs/2021/05/10/todo/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/blogs/img/avatar.png" width="44px" height="44px" alt="Tian Beiwen's avatar">
-            </div>
-            <div>
-                <strong>Tian Beiwen</strong>
-                <span>5月 10, 2021</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/blogs/2021/05/04/ops/">常用操作速查</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            zip相关
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/blogs/2021/05/04/ops/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/blogs/img/avatar.png" width="44px" height="44px" alt="Tian Beiwen's avatar">
-            </div>
-            <div>
-                <strong>Tian Beiwen</strong>
-                <span>5月 04, 2021</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/blogs/categories/Tools/">Tools</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/blogs/2021/05/04/TransFG/">TransFG</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            TransFG, a simple yet effective framework based on ViT.
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/blogs/2021/05/04/TransFG/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/blogs/img/avatar.png" width="44px" height="44px" alt="Tian Beiwen's avatar">
-            </div>
-            <div>
-                <strong>Tian Beiwen</strong>
-                <span>5月 04, 2021</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/blogs/categories/Academic/">Academic</a>, <a class="post_category-link" href="/blogs/categories/Academic/CV/">CV</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/blogs/2021/05/03/vim-shortcut/">Vim 快捷键</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            光标移动
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/blogs/2021/05/03/vim-shortcut/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/blogs/img/avatar.png" width="44px" height="44px" alt="Tian Beiwen's avatar">
-            </div>
-            <div>
-                <strong>Tian Beiwen</strong>
-                <span>5月 03, 2021</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/blogs/categories/Tools/">Tools</a>, <a class="post_category-link" href="/blogs/categories/Tools/Vim/">Vim</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/blogs/2021/05/03/C/">Git 子模块</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            Git允许将一个仓库作为另一个仓库的子目录，在实践中能将其它仓库克隆到当前目录的同时保持提交的独立。
-
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/blogs/2021/05/03/C/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/blogs/img/avatar.png" width="44px" height="44px" alt="Tian Beiwen's avatar">
-            </div>
-            <div>
-                <strong>Tian Beiwen</strong>
-                <span>5月 03, 2021</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/blogs/categories/Tools/">Tools</a>, <a class="post_category-link" href="/blogs/categories/Tools/Git/">Git</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-
-    
-
-    
-        <script type="text/ls-javascript" id="thumbnail-script">
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/blogs/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').attr('data-original', '/blogs/img/random/material-' + randomNum + '.png');
     $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                OS-review-lab6
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/blogs/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Tian Beiwen</strong>
+        <span>5月 11, 2021</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-none-link" href="/blogs/tags/Operating-System/" rel="tag">Operating System</a></li><li class="mdl-menu__item"><a class="post_tag-none-link" href="/blogs/tags/Review/" rel="tag">Review</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=OS-review-lab6&url=http://tb5zhh.github.io/blogs/blogs/2021/05/11/OS-review-lab6/index.html&pic=http://tb5zhh.github.io/blogs/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=OS-review-lab6&url=http://tb5zhh.github.io/blogs/blogs/2021/05/11/OS-review-lab6/index.html&via=Tian Beiwen" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://tb5zhh.github.io/blogs/blogs/2021/05/11/OS-review-lab6/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=TB5&#39;s Blogs&title=OS-review-lab6&summary=&pics=http://tb5zhh.github.io/blogs/img/favicon.png&url=http://tb5zhh.github.io/blogs/blogs/2021/05/11/OS-review-lab6/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
     
 </div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>管理文件的进程控制快</li>
+<li>I/O重定向</li>
+<li>管道</li>
+</ul>
+<h2 id="系统调用"><a href="#系统调用" class="headerlink" title="系统调用"></a>系统调用</h2><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// 功能：为当前进程打开一个管道。</span></span><br><span class="line"><span class="comment">/// 参数：pipe 表示应用地址空间中的一个长度为 2 的 usize 数组的起始地址，内核需要按顺序将管道读端</span></span><br><span class="line"><span class="comment">/// 和写端的文件描述符写入到数组中。</span></span><br><span class="line"><span class="comment">/// 返回值：如果出现了错误则返回 -1，否则返回 0 。可能的错误原因是：传入的地址不合法。</span></span><br><span class="line"><span class="comment">/// syscall ID：59</span></span><br><span class="line"><span class="keyword">pub</span> <span class="function"><span class="keyword">fn</span> <span class="title">sys_pipe</span></span>(pipe: *<span class="keyword">mut</span> <span class="built_in">usize</span>) -&gt; <span class="built_in">isize</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 功能：当前进程关闭一个文件。</span></span><br><span class="line"><span class="comment">/// 参数：fd 表示要关闭的文件的文件描述符。</span></span><br><span class="line"><span class="comment">/// 返回值：如果成功关闭则返回 0 ，否则返回 -1 。可能的出错原因：传入的文件描述符并不对应一个打开的文件。</span></span><br><span class="line"><span class="comment">/// syscall ID：57</span></span><br><span class="line"><span class="keyword">pub</span> <span class="function"><span class="keyword">fn</span> <span class="title">sys_close</span></span>(fd: <span class="built_in">usize</span>) -&gt; <span class="built_in">isize</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="文件接口"><a href="#文件接口" class="headerlink" title="文件接口"></a>文件接口</h3><blockquote>
+<p>文件Trait</p>
+</blockquote>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// UserBuffer 可认为是&amp;[u8]切片</span></span><br><span class="line"><span class="keyword">pub</span> <span class="class"><span class="keyword">trait</span> <span class="title">File</span></span> : <span class="built_in">Send</span> + <span class="built_in">Sync</span> &#123;</span><br><span class="line">    <span class="comment">// 读取文件内容并置于buf中</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">read</span></span>(&amp;<span class="keyword">self</span>, buf: UserBuffer) -&gt; <span class="built_in">usize</span>;</span><br><span class="line">    <span class="comment">// 将buf中内容写入文件</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">write</span></span>(&amp;<span class="keyword">self</span>, buf: UserBuffer) -&gt; <span class="built_in">usize</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>所有文件需要实现如何读出/写入。</p>
+<blockquote>
+<p>stdin</p>
+</blockquote>
+<p>限定用户缓冲区长度为1。循环从RustSBI获取输入的字符，如果未获取字符则<strong>放弃CPU资源</strong>并将进程放入进程池；如果获取了字符则退出循环并将字符写入缓冲区。返回读取的字符数（1）</p>
+<p><strong style="text-shadow: #FC0 1px 0 10px;">通过<code>UserBuffer</code>获取字节写入位置？</strong></p>
+<blockquote>
+<p>stdout</p>
+</blockquote>
+<p>将缓冲区中内容打印至控制台，返回实际打印的字符数量。</p>
+<blockquote>
+<p>文件描述符表（<strong>文件引用表</strong>）</p>
+</blockquote>
+<p>实现为<code>Vec&lt;Option&lt;Arc&lt;dyn File + Send + Sync&gt;&gt;&gt;</code>，文件描述符作为该数组的下标访问具体的文件引用。</p>
+<p>使用<code>Option</code>用于指示文件描述符（指定的文件位置）是否空间，<code>Some</code>表示已被占用，<code>None</code>表示空闲。使用<code>Arc</code>获得共享引用能力，使用<code>dyn</code>关键字利用运行时多态、对抽象方法在运行时查找具体实现。</p>
+<p>在新创建进程时（<code>INITPROC</code>），将<code>stdin</code>，<code>stdout</code>，<code>stderr</code>放入文件描述符表中；在fork时，子进程需要完全继承父进程的文件描述符表。</p>
+<h3 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h3><blockquote>
+<p>基于文件的管道</p>
+</blockquote>
+<p>通过<code>pipe</code>系统调用打开管道，将读端和写端作为文件保存在文件描述符表。</p>
+<p>关闭管道端口时，使用<code>Option::take()</code>方法，将文件描述符指示的表中位置置为<code>None</code>即可。当文件的引用计数减为0时，文件占用的资源被自动回收。</p>
+<p>管道端口被抽象为<code>Pipe</code>类型，维护<code>Arc&lt;Mutex&lt;PipeRingBuffer&gt;&gt;</code>类型的缓冲区，该缓冲区由读端与写端共享。</p>
+<p>实现<code>File</code>Trait。</p>
+<ul>
+<li>读取语义为<strong>从文件中读取应用缓冲区大小</strong>的字符。文件（循环队列）中不存在足够字符时暂停并换出进程，等待循环队列中有新的字符后再继续读取。<ul>
+<li>实现：若管道为空，则<strong>检查是否有可用写端</strong>，若没有则返回0否则放弃CPU资源以等待写入段写入；若管道非空，将管道内容写入缓冲区，如果缓冲区写满则退出，否则继续循环。</li>
+</ul>
+</li>
+<li>写入语义为<strong>向文件写入缓冲区中全部内容</strong>，文件（循环队列）中不存在可写入空间时暂停并换出进程，等待循环队列中有新的空间时再写入。<ul>
+<li>实现：若管道为满，放弃CPU资源等待管道中新空闲位置产生；为管道非满，则将缓冲区内容写入文件，直到全部写入。</li>
+</ul>
+</li>
+</ul>
+<p><code>PipeRingBuffer</code>可以创建新的读端/写端，提供读取和获取状态的方法。</p>
+<h2 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h2><blockquote>
+<p>在<code>sys_read</code>与<code>sys_write</code>的实现中，为什么要在调用文件的<code>read</code>/<code>write</code>方法前手动释放PCB.inner的互斥锁？</p>
+<p>举出使用 pipe 的一个实际应用的例子。</p>
+<p>假设我们的邮箱现在有了更加强大的功能，容量大幅增加而且记录邮件来源，可以实现“回信”。考虑一个多核场景，有 m 个核为消费者，n 个为生产者，消费者通过邮箱向生产者提出订单，生产者通过邮箱回信给出产品。</p>
+<ul>
+<li>假设你的邮箱实现没有使用锁等机制进行保护，在多核情景下可能会发生哪些问题？单核一定不会发生问题吗？为什么？</li>
+<li>请结合你在课堂上学到的内容，描述读者写者问题的经典解决方案，必要时提供伪代码。</li>
+<li>由于读写是基于报文的，不是随机读写，你有什么点子来优化邮箱的实现吗？</li>
+</ul>
+</blockquote>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 DISQUS -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://tb5zhh.github.io/blogs/2021/05/11/OS-review-lab6/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://tb5zhh.github.io/blogs/2021/05/11/OS-review-lab6/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+<script type="text/ls-javascript" id="disqus-thread-script">
+    queue.offer(function() {
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        });
+</script>
+
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/blogs/2021/05/10/OS-review-lab5/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
